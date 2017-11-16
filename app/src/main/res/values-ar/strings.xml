@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">عداد النقاط</string>
+    <string name="team_1">الفريق 1</string>
+    <string name="reset">تصفير</string>
+    <string name="team_2">الفريق 2</string>
+    <string name="plus2">+2 نقطة</string>
+    <string name="plus3">+3 نقاط</string>
+</resources>
