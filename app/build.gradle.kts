@@ -27,7 +27,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         buildFeatures {
-            dataBinding = true
+            compose = true
         }
 
         versionCode = 1
@@ -39,7 +39,7 @@ android {
     productFlavors {
         maybeCreate("dev")
         getByName("dev") {
-            setDimension("dev")
+            dimension = "dev"
 
             minSdkVersion(28)
 
@@ -49,7 +49,7 @@ android {
         }
         maybeCreate("deploy")
         getByName("deploy") {
-            setDimension("dev")
+            dimension = "dev"
 
             minSdkVersion(21)
 
@@ -96,6 +96,17 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        useIR = true
+        freeCompilerArgs = freeCompilerArgs + arrayOf(
+            "-Xallow-jvm-ir-dependencies",
+            "-Xskip-prerelease-check",
+            "-Xopt-in=kotlin.RequiresOptIn"
+        )
+    }
+
+    composeOptions {
+//        kotlinCompilerVersion = Versions.kotlin
+        kotlinCompilerExtensionVersion = Versions.compose
     }
 }
 
@@ -105,25 +116,32 @@ dependencies {
     //endregion
 
     //region Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinVersion}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
     //endregion
 
     //region AndroidX
-    implementation("androidx.appcompat:appcompat:${Versions.appCompatVersion}")
-    implementation("androidx.core:core-ktx:${Versions.coreVersion}")
-    implementation("androidx.fragment:fragment-ktx:${Versions.fragmentVersion}")
+    implementation("androidx.appcompat:appcompat:${Versions.appCompat}")
+    implementation("androidx.core:core-ktx:${Versions.core}")
+    implementation("androidx.fragment:fragment-ktx:${Versions.fragment}")
     //endregion
 
     //region UI Components
-    implementation("androidx.constraintlayout:constraintlayout:${Versions.constraintLayoutVersion}")
+    implementation("androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}")
     //endregion
 
     //region Lifecycle Components
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
     //endregion
 
     //region Google
-    implementation("com.google.android.material:material:${Versions.materialVersion}")
+    implementation("com.google.android.material:material:${Versions.material}")
+    //endregion
+
+    //region Compose
+    implementation("androidx.compose.ui:ui:${Versions.compose}")
+    implementation("androidx.compose.material:material:${Versions.compose}")
+    implementation("androidx.ui:ui-tooling:${Versions.compose}")
+    implementation("androidx.compose.runtime:runtime-livedata:${Versions.compose}")
     //endregion
 }
