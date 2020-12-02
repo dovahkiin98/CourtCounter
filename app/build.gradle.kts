@@ -3,7 +3,6 @@ import java.text.SimpleDateFormat
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("android.extensions")
     kotlin("kapt")
 }
 
@@ -105,16 +104,12 @@ android {
     }
 
     composeOptions {
-//        kotlinCompilerVersion = Versions.kotlin
+        kotlinCompilerVersion = Versions.kotlin
         kotlinCompilerExtensionVersion = Versions.compose
     }
 }
 
 dependencies {
-    //region Local
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    //endregion
-
     //region Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
     //endregion
@@ -123,6 +118,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:${Versions.appCompat}")
     implementation("androidx.core:core-ktx:${Versions.core}")
     implementation("androidx.fragment:fragment-ktx:${Versions.fragment}")
+    implementation("androidx.activity:activity-ktx:${Versions.activity}")
     //endregion
 
     //region UI Components

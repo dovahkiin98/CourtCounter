@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
 import net.inferno.courtcounter.layout.mainActivity
+import net.inferno.courtcounter.theme.AppTheme
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +12,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            mainActivity()
+            AppTheme {
+                mainActivity()
+            }
         }
     }
 }
