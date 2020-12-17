@@ -13,11 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.ui.tooling.preview.Devices
-import androidx.ui.tooling.preview.Preview
 import net.inferno.courtcounter.R
 import net.inferno.courtcounter.theme.AppTheme
 import net.inferno.courtcounter.viewModel.MainViewModel
@@ -25,7 +25,7 @@ import java.util.*
 
 @OptIn(ExperimentalLayout::class)
 @Composable
-fun mainActivity(
+fun MainActivity(
     mainViewModel: MainViewModel = viewModel()
 ) {
     val team1Score by mainViewModel.firstTeam.observeAsState()
@@ -191,13 +191,25 @@ fun mainActivity(
 }
 
 @Preview(
-    showDecoration = true,
-    device = Devices.NEXUS_5,
+    showSystemUi = true,
+    device = Devices.PIXEL_4,
     uiMode = Configuration.UI_MODE_NIGHT_YES,
 )
 @Composable
-fun mainActivityPreviewLight() {
-    AppTheme {
-        mainActivity(MainViewModel())
+fun MainActivityPreview() {
+    AppTheme(isDarkTheme = false) {
+        MainActivity(MainViewModel())
+    }
+}
+
+@Preview(
+    showSystemUi = true,
+    device = Devices.PIXEL_4,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+)
+@Composable
+fun MainActivityPreviewDark() {
+    AppTheme(isDarkTheme = true) {
+        MainActivity(MainViewModel())
     }
 }

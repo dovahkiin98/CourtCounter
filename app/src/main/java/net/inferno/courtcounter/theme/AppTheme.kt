@@ -9,16 +9,19 @@ import androidx.compose.ui.res.colorResource
 import net.inferno.courtcounter.R
 
 @Composable
-fun AppTheme(content: @Composable () -> Unit) {
+fun AppTheme(
+    isDarkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit,
+) {
     MaterialTheme(
-        colors = colors(),
+        colors = colors(isDarkTheme),
     ) {
         content()
     }
 }
 
 @Composable
-fun colors() = if (isSystemInDarkTheme()) darkColors(
+fun colors(isDarkTheme: Boolean = isSystemInDarkTheme()) = if (isSystemInDarkTheme() || isDarkTheme) darkColors(
     primary = colorResource(R.color.colorPrimary),
     primaryVariant = colorResource(R.color.colorPrimaryDark),
     secondary = colorResource(R.color.colorAccent),

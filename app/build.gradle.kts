@@ -111,7 +111,7 @@ android {
 
 dependencies {
     //region Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
+    implementation(kotlin("stdlib-jdk8", Versions.kotlin))
     //endregion
 
     //region AndroidX
@@ -137,7 +137,7 @@ dependencies {
     //region Compose
     implementation("androidx.compose.ui:ui:${Versions.compose}")
     implementation("androidx.compose.material:material:${Versions.compose}")
-    implementation("androidx.ui:ui-tooling:${Versions.compose}")
+    implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
     implementation("androidx.compose.runtime:runtime-livedata:${Versions.compose}")
     //endregion
 }
