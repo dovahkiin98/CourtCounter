@@ -7,7 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.savedinstancestate.savedInstanceState
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,19 +18,16 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.viewModel
 import net.inferno.courtcounter.R
 import net.inferno.courtcounter.theme.AppTheme
-import net.inferno.courtcounter.viewModel.MainViewModel
 import java.util.*
 
 @OptIn(ExperimentalLayout::class)
 @Composable
 fun MainActivity(
-    mainViewModel: MainViewModel = viewModel()
 ) {
-    val team1Score by mainViewModel.firstTeam.observeAsState()
-    val team2Score by mainViewModel.secondTeam.observeAsState()
+    var team1Score by savedInstanceState(null, key = "team1Score") { 0 }
+    var team2Score by savedInstanceState(null, key = "team2Score") { 0 }
 
     Scaffold(
         topBar = {
@@ -78,7 +76,7 @@ fun MainActivity(
                             )
                             .padding(top = 16.dp),
                         onClick = {
-                            mainViewModel.addScore(0, 2)
+                            team1Score += 2
                         },
                     ) {
                         Text(
@@ -97,7 +95,7 @@ fun MainActivity(
                                 bottom = 8.dp,
                             ),
                         onClick = {
-                            mainViewModel.addScore(0, 3)
+                            team1Score += 3
                         }
                     ) {
                         Text(
@@ -106,13 +104,13 @@ fun MainActivity(
                         )
                     }
                 }
-                Divider(
+                Box(
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
                         .padding(vertical = 8.dp)
                         .fillMaxHeight()
                         .width(1.dp)
-                        .background(MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
+                        .background(MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
                 )
                 Column(
                     modifier = Modifier
@@ -139,7 +137,7 @@ fun MainActivity(
                             )
                             .padding(top = 16.dp),
                         onClick = {
-                            mainViewModel.addScore(1, 2)
+                            team2Score += 2
                         },
                     ) {
                         Text(
@@ -158,7 +156,7 @@ fun MainActivity(
                                 bottom = 8.dp,
                             ),
                         onClick = {
-                            mainViewModel.addScore(1, 3)
+                            team2Score += 3
                         }
                     ) {
                         Text(
@@ -178,7 +176,8 @@ fun MainActivity(
                     .padding(horizontal = 8.dp)
                     .padding(bottom = 8.dp),
                 onClick = {
-                    mainViewModel.resetScores()
+                    team1Score = 0
+                    team2Score = 0
                 },
             ) {
                 Text(
@@ -198,7 +197,7 @@ fun MainActivity(
 @Composable
 fun MainActivityPreview() {
     AppTheme(isDarkTheme = false) {
-        MainActivity(MainViewModel())
+        MainActivity()
     }
 }
 
@@ -210,6 +209,6 @@ fun MainActivityPreview() {
 @Composable
 fun MainActivityPreviewDark() {
     AppTheme(isDarkTheme = true) {
-        MainActivity(MainViewModel())
+        MainActivity()
     }
 }

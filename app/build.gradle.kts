@@ -16,6 +16,7 @@ android {
         }
     }
 
+    buildToolsVersion = "30.0.3"
     compileSdkVersion(30)
 
     defaultConfig {
