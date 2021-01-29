@@ -105,7 +105,6 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerVersion = Versions.kotlin
         kotlinCompilerExtensionVersion = Versions.compose
     }
 }
@@ -122,17 +121,9 @@ dependencies {
     implementation("androidx.activity:activity-ktx:${Versions.activity}")
     //endregion
 
-    //region UI Components
-    implementation("androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}")
-    //endregion
-
     //region Lifecycle Components
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
-    //endregion
-
-    //region Google
-    implementation("com.google.android.material:material:${Versions.material}")
     //endregion
 
     //region Compose
