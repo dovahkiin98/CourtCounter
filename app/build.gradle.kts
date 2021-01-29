@@ -126,6 +126,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
     //endregion
 
+    //region Google
+    implementation("com.google.android.material:material:${Versions.material}")
+    //endregion
+
     //region Compose
     implementation("androidx.compose.ui:ui:${Versions.compose}")
     implementation("androidx.compose.material:material:${Versions.compose}")
