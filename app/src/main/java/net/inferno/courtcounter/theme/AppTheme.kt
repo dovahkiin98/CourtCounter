@@ -5,6 +5,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import net.inferno.courtcounter.R
 
@@ -25,8 +26,10 @@ fun colors(isDarkTheme: Boolean = isSystemInDarkTheme()) = if (isSystemInDarkThe
     primary = colorResource(R.color.colorPrimary),
     primaryVariant = colorResource(R.color.colorPrimaryDark),
     secondary = colorResource(R.color.colorAccent),
+    onSurface = Color.White,
 ) else lightColors(
     primary = colorResource(R.color.colorPrimary),
     primaryVariant = colorResource(R.color.colorPrimaryDark),
     secondary = colorResource(R.color.colorAccent),
+    onSurface = Color.White,
 )

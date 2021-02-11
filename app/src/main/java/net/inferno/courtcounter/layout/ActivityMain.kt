@@ -7,7 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,8 +27,8 @@ import java.util.*
 @Composable
 fun MainActivity(
 ) {
-    var team1Score by savedInstanceState(null, key = "team1Score") { 0 }
-    var team2Score by savedInstanceState(null, key = "team2Score") { 0 }
+    var team1Score by rememberSaveable(null, key = "team1Score") { mutableStateOf(0) }
+    var team2Score by rememberSaveable(null, key = "team2Score") { mutableStateOf(0) }
 
     Scaffold(
         topBar = {

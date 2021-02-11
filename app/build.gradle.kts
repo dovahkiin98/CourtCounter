@@ -117,13 +117,6 @@ dependencies {
     //region AndroidX
     implementation("androidx.appcompat:appcompat:${Versions.appCompat}")
     implementation("androidx.core:core-ktx:${Versions.core}")
-    implementation("androidx.fragment:fragment-ktx:${Versions.fragment}")
-    implementation("androidx.activity:activity-ktx:${Versions.activity}")
-    //endregion
-
-    //region Lifecycle Components
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
     //endregion
 
     //region Google
@@ -134,6 +127,12 @@ dependencies {
     implementation("androidx.compose.ui:ui:${Versions.compose}")
     implementation("androidx.compose.material:material:${Versions.compose}")
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
-    implementation("androidx.compose.runtime:runtime-livedata:${Versions.compose}")
+
+    implementation("androidx.activity:activity-compose:1.3.0-alpha01")
+    //endregion
+
+    //region Debug
+    debugImplementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
+    debugImplementation("org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}")
     //endregion
 }

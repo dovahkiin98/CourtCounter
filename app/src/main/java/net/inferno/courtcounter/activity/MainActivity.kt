@@ -1,8 +1,8 @@
 package net.inferno.courtcounter.activity
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.platform.setContent
 import net.inferno.courtcounter.layout.MainActivity
 import net.inferno.courtcounter.theme.AppTheme
 
