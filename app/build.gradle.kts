@@ -16,7 +16,7 @@ android {
         }
     }
 
-    buildToolsVersion = "30.0.3"
+    buildToolsVersion = "31.0.0-rc1"
     compileSdkVersion(30)
 
     defaultConfig {
@@ -128,7 +128,7 @@ dependencies {
     implementation("androidx.compose.material:material:${Versions.compose}")
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
 
-    implementation("androidx.activity:activity-compose:1.3.0-alpha01")
+    implementation("androidx.activity:activity-compose:1.3.0-alpha03")
     //endregion
 
     //region Debug

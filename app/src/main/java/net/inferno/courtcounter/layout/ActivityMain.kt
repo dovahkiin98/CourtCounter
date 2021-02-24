@@ -23,7 +23,6 @@ import net.inferno.courtcounter.R
 import net.inferno.courtcounter.theme.AppTheme
 import java.util.*
 
-@OptIn(ExperimentalLayout::class)
 @Composable
 fun MainActivity(
 ) {
@@ -51,7 +50,7 @@ fun MainActivity(
             item {
                 Row(
                     modifier = Modifier
-                        .preferredHeight(IntrinsicSize.Max)
+                        .height(IntrinsicSize.Max)
                 ) {
                     Column(
                         modifier = Modifier
