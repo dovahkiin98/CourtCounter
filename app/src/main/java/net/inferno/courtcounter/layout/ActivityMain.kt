@@ -196,7 +196,8 @@ fun MainActivity(
 @Preview(
     showSystemUi = true,
     device = Devices.PIXEL_4,
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    name = "Light Theme"
 )
 @Composable
 fun MainActivityPreview() {
@@ -209,6 +210,7 @@ fun MainActivityPreview() {
     showSystemUi = true,
     device = Devices.PIXEL_4,
     uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "Dark Theme",
 )
 @Composable
 fun MainActivityPreviewDark() {

@@ -16,7 +16,7 @@ android {
         }
     }
 
-    buildToolsVersion = "31.0.0-rc1"
+    buildToolsVersion = "31.0.0-rc2"
     compileSdkVersion(30)
 
     defaultConfig {
@@ -117,6 +117,9 @@ dependencies {
     //region AndroidX
     implementation("androidx.appcompat:appcompat:${Versions.appCompat}")
     implementation("androidx.core:core-ktx:${Versions.core}")
+    implementation("androidx.activity:activity-ktx:${Versions.activity}")
+
+    implementation("androidx.activity:activity-compose:${Versions.activity}")
     //endregion
 
     //region Google
@@ -127,8 +130,6 @@ dependencies {
     implementation("androidx.compose.ui:ui:${Versions.compose}")
     implementation("androidx.compose.material:material:${Versions.compose}")
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
-
-    implementation("androidx.activity:activity-compose:1.3.0-alpha03")
     //endregion
 
     //region Debug
