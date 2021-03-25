@@ -201,7 +201,7 @@ fun MainActivity(
 )
 @Composable
 fun MainActivityPreview() {
-    AppTheme(isDarkTheme = false) {
+    AppTheme {
         MainActivity()
     }
 }
@@ -214,7 +214,7 @@ fun MainActivityPreview() {
 )
 @Composable
 fun MainActivityPreviewDark() {
-    AppTheme(isDarkTheme = true) {
+    AppTheme {
         MainActivity()
     }
 }
