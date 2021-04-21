@@ -16,7 +16,7 @@ android {
         }
     }
 
-    buildToolsVersion = "31.0.0-rc2"
+    buildToolsVersion = "31.0.0-rc3"
     compileSdkVersion(30)
 
     defaultConfig {
@@ -124,6 +124,7 @@ dependencies {
 
     //region Google
     implementation("com.google.android.material:material:${Versions.material}")
+    implementation("androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}")
     //endregion
 
     //region Compose
