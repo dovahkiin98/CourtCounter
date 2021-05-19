@@ -16,7 +16,7 @@ android {
         }
     }
 
-    buildToolsVersion = "31.0.0-rc3"
+    buildToolsVersion = "31.0.0-rc4"
     compileSdkVersion(30)
 
     defaultConfig {
@@ -96,7 +96,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
         freeCompilerArgs = freeCompilerArgs + arrayOf(
             "-Xallow-jvm-ir-dependencies",
             "-Xskip-prerelease-check",
