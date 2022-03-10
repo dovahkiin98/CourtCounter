@@ -16,14 +16,13 @@ android {
         }
     }
 
-    buildToolsVersion = "31.0.0-rc4"
-    compileSdkVersion(30)
+    buildToolsVersion = "33.0.0-rc1"
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "net.inferno.courtcounter"
 
-        minSdkVersion(21)
-        targetSdkVersion(30)
+        targetSdk = 31
 
         vectorDrawables.useSupportLibrary = true
         buildFeatures {
@@ -34,14 +33,14 @@ android {
         versionName = "1.0"
     }
 
-    flavorDimensions("dev")
+    flavorDimensions += setOf("dev")
 
     productFlavors {
         maybeCreate("dev")
         getByName("dev") {
             dimension = "dev"
 
-            minSdkVersion(28)
+            minSdk = 30
 
             versionNameSuffix = "-dev" + "-" + SimpleDateFormat("dd-MM-yyyy").format(System.currentTimeMillis())
 
@@ -51,7 +50,7 @@ android {
         getByName("deploy") {
             dimension = "dev"
 
-            minSdkVersion(21)
+            minSdk = 23
 
             buildConfigField("boolean", "DEV", "false")
         }
@@ -90,12 +89,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
         freeCompilerArgs = freeCompilerArgs + arrayOf(
             "-Xallow-jvm-ir-dependencies",
             "-Xskip-prerelease-check",
@@ -129,6 +128,7 @@ dependencies {
     //region Compose
     implementation("androidx.compose.ui:ui:${Versions.compose}")
     implementation("androidx.compose.material:material:${Versions.compose}")
+    implementation("androidx.compose.material3:material3:${Versions.composeMaterial3}")
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
     //endregion
 

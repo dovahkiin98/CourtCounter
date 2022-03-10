@@ -1,10 +1,13 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package net.inferno.courtcounter.layout
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import net.inferno.courtcounter.R
 import net.inferno.courtcounter.theme.AppTheme
+import net.inferno.courtcounter.theme.digitalFont
 import java.util.*
 
 @Composable
@@ -29,165 +33,170 @@ fun MainActivity(
     var team1Score by rememberSaveable(null, key = "team1Score") { mutableStateOf(0) }
     var team2Score by rememberSaveable(null, key = "team2Score") { mutableStateOf(0) }
 
+    val scrollState = rememberScrollState()
+
     Scaffold(
         topBar = {
-            TopAppBar(
-                backgroundColor = MaterialTheme.colors.primary,
-            ) {
-                Text(
-                    text = stringResource(R.string.app_name),
-                    style = MaterialTheme.typography.h6,
-                    textAlign = TextAlign.Center,
-                    color = Color.White,
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .fillMaxWidth()
-                )
-            }
+            SmallTopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(R.string.app_name),
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                    )
+                },
+                modifier = Modifier.statusBarsPadding(),
+            )
         },
     ) {
-        LazyColumn {
-            item {
-                Row(
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState)
+        ) {
+            Row(
+                modifier = Modifier
+                    .height(IntrinsicSize.Max),
+            ) {
+                Column(
                     modifier = Modifier
-                        .height(IntrinsicSize.Max)
+                        .weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    Column(
+                    Text(
+                        text = stringResource(R.string.team_1),
                         modifier = Modifier
-                            .weight(1f),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Text(
-                            text = stringResource(R.string.team_1),
-                            fontSize = 20.sp,
-                            modifier = Modifier
-                                .padding(top = 16.dp)
-                        )
-                        Text(
-                            text = team1Score.toString(),
-                            fontSize = 60.sp,
-                            modifier = Modifier
-                                .padding(top = 16.dp),
-                        )
-                        Button(
-                            modifier = Modifier
-                                .padding(
-                                    top = 4.dp,
-                                    bottom = 8.dp,
-                                )
-                                .padding(top = 16.dp),
-                            onClick = {
-                                team1Score += 2
-                            },
-                        ) {
-                            Text(
-                                text = stringResource(R.string.plus2).toUpperCase(Locale.getDefault()),
-                                color = Color.White,
-                            )
-                        }
-                        Button(
-                            modifier = Modifier
-                                .padding(
-                                    top = 4.dp,
-                                    bottom = 8.dp,
-                                )
-                                .padding(
-                                    top = 16.dp,
-                                    bottom = 8.dp,
-                                ),
-                            onClick = {
-                                team1Score += 3
-                            }
-                        ) {
-                            Text(
-                                text = stringResource(R.string.plus3).toUpperCase(Locale.getDefault()),
-                                color = Color.White,
-                            )
-                        }
-                    }
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically)
-                            .padding(vertical = 8.dp)
-                            .fillMaxHeight()
-                            .width(1.dp)
-                            .background(MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
+                            .padding(top = 16.dp),
+                        fontSize = 20.sp,
                     )
-                    Column(
+                    Text(
+                        text = team1Score.toString(),
                         modifier = Modifier
-                            .weight(1f),
-                        horizontalAlignment = Alignment.CenterHorizontally,
+                            .padding(top = 16.dp),
+                        fontSize = 72.sp,
+                        fontFamily = digitalFont,
+                    )
+                    Button(
+                        onClick = {
+                            team1Score += 2
+                        },
+                        modifier = Modifier
+                            .padding(
+                                top = 4.dp,
+                                bottom = 8.dp,
+                            )
+                            .padding(top = 16.dp),
                     ) {
                         Text(
-                            text = stringResource(R.string.team_2),
-                            fontSize = 20.sp,
-                            modifier = Modifier
-                                .padding(top = 16.dp)
+                            text = stringResource(R.string.plus2).uppercase(Locale.getDefault()),
+                            color = Color.White,
                         )
+                    }
+                    Button(
+                        onClick = {
+                            team1Score += 3
+                        },
+                        modifier = Modifier
+                            .padding(
+                                top = 4.dp,
+                                bottom = 8.dp,
+                            )
+                            .padding(
+                                top = 16.dp,
+                                bottom = 8.dp,
+                            ),
+                    ) {
                         Text(
-                            text = team2Score.toString(),
-                            fontSize = 60.sp,
-                            modifier = Modifier
-                                .padding(top = 16.dp),
+                            text = stringResource(R.string.plus3).uppercase(Locale.getDefault()),
+                            color = Color.White,
                         )
-                        Button(
-                            modifier = Modifier
-                                .padding(
-                                    top = 4.dp,
-                                    bottom = 8.dp,
-                                )
-                                .padding(top = 16.dp),
-                            onClick = {
-                                team2Score += 2
-                            },
-                        ) {
-                            Text(
-                                text = stringResource(R.string.plus2).toUpperCase(Locale.getDefault()),
-                                color = Color.White,
+                    }
+                }
+
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .padding(vertical = 8.dp)
+                        .fillMaxHeight()
+                        .width(1.dp)
+                        .background(MaterialTheme.colorScheme.surfaceVariant)
+                )
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Text(
+                        text = stringResource(R.string.team_2),
+                        modifier = Modifier
+                            .padding(top = 16.dp),
+                        fontSize = 20.sp,
+                    )
+                    Text(
+                        text = team2Score.toString(),
+                        modifier = Modifier
+                            .padding(top = 16.dp),
+                        fontSize = 72.sp,
+                        fontFamily = digitalFont,
+                    )
+                    Button(
+                        onClick = {
+                            team2Score += 2
+                        },
+                        modifier = Modifier
+                            .padding(
+                                top = 4.dp,
+                                bottom = 8.dp,
                             )
-                        }
-                        Button(
-                            modifier = Modifier
-                                .padding(
-                                    top = 4.dp,
-                                    bottom = 8.dp,
-                                )
-                                .padding(
-                                    top = 16.dp,
-                                    bottom = 8.dp,
-                                ),
-                            onClick = {
-                                team2Score += 3
-                            }
-                        ) {
-                            Text(
-                                text = stringResource(R.string.plus3).toUpperCase(Locale.getDefault()),
-                                color = Color.White,
+                            .padding(top = 16.dp),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.plus2).uppercase(Locale.getDefault()),
+                            color = Color.White,
+                        )
+                    }
+                    Button(
+                        onClick = {
+                            team2Score += 3
+                        },
+                        modifier = Modifier
+                            .padding(
+                                top = 4.dp,
+                                bottom = 8.dp,
                             )
-                        }
+                            .padding(
+                                top = 16.dp,
+                                bottom = 8.dp,
+                            ),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.plus3).uppercase(Locale.getDefault()),
+                            color = Color.White,
+                        )
                     }
                 }
             }
-            item {
-                Button(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = 4.dp,
-                            bottom = 8.dp,
-                        )
-                        .padding(horizontal = 8.dp)
-                        .padding(bottom = 8.dp),
-                    onClick = {
-                        team1Score = 0
-                        team2Score = 0
-                    },
-                ) {
-                    Text(
-                        text = stringResource(R.string.reset).toUpperCase(Locale.getDefault()),
-                        color = Color.White,
+
+            Button(
+                onClick = {
+                    team1Score = 0
+                    team2Score = 0
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        top = 4.dp,
+                        bottom = 8.dp,
                     )
-                }
+                    .padding(horizontal = 8.dp)
+                    .padding(bottom = 8.dp),
+            ) {
+                Text(
+                    text = stringResource(R.string.reset).uppercase(Locale.getDefault()),
+                    color = Color.White,
+                )
             }
         }
     }
