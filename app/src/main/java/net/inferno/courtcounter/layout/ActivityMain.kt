@@ -54,6 +54,7 @@ fun MainActivity(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState)
+                .padding(it)
         ) {
             Row(
                 modifier = Modifier

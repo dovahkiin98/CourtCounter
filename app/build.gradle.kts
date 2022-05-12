@@ -16,13 +16,13 @@ android {
         }
     }
 
-    buildToolsVersion = "33.0.0-rc1"
-    compileSdk = 31
+    buildToolsVersion = "33.0.0-rc4"
+    compileSdk = 32
 
     defaultConfig {
         applicationId = "net.inferno.courtcounter"
 
-        targetSdk = 31
+        targetSdk = 32
 
         vectorDrawables.useSupportLibrary = true
         buildFeatures {
@@ -122,7 +122,6 @@ dependencies {
 
     //region Google
     implementation("com.google.android.material:material:${Versions.material}")
-    implementation("androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}")
     //endregion
 
     //region Compose
