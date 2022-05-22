@@ -10,8 +10,8 @@ object Versions {
     const val activity = "1.5.0-rc01"
     const val core = "1.8.0-rc01"
 
-    const val compose = "1.2.0-beta01"
-    const val composeMaterial3 = "1.0.0-alpha11"
+    const val compose = "1.2.0-beta02"
+    const val composeMaterial3 = "1.0.0-alpha12"
 
     // Google
     const val material = "1.6.0"
